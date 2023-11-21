@@ -1,4 +1,5 @@
 import 'package:aman_s_application6/presentation/home_screen/widgets/blogcard_horizontal_widget.dart';
+import '../detail_screen/detail_screen.dart';
 import '../home_screen/widgets/blogcard_item_widget.dart';
 import '../home_screen/widgets/thirtytwo_item_widget.dart';
 import 'package:aman_s_application6/core/app_export.dart';
@@ -18,18 +19,29 @@ class HomeScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: _buildAppBar(context),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const Text('Explore'),
+          automaticallyImplyLeading: false, // This removes the back icon
+          actions: [
+            IconButton(
+              icon: Icon(Icons.notifications),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NotificationPanel()),
+                );
+              },
+            ),
+          ],
+        ),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.only(left: 16.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: EdgeInsets.only(left: 16.h, top: 20.h),
+          child: ListView(
             children: [
-              Text(
-                "Explore today’s",
-                style: theme.textTheme.titleLarge,
-              ),
-              SizedBox(height: 26.v),
               _buildThirtyTwo(context),
               SizedBox(height: 28.v),
               _buildBlogCard(context),
@@ -46,7 +58,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
+/*  PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
       title: AppbarTitle(
         text: "Hi Jonathan!",
@@ -59,7 +71,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     );
-  }
+  }*/
 
   /// Section Widget Round--Card
   Widget _buildThirtyTwo(BuildContext context) {
@@ -137,7 +149,7 @@ class HomeScreen extends StatelessWidget {
   /// Section Widget
  Widget _buildBlogHorizontalCard(BuildContext context){
    return SizedBox(
-     height: 200.v,
+     height: 230.v,
      child: ListView.separated(
        padding: EdgeInsets.only(right: 13.h),
        scrollDirection: Axis.vertical,

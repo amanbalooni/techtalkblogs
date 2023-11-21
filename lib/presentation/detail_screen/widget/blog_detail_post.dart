@@ -5,11 +5,13 @@ import 'package:aman_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:aman_s_application6/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
+import '../detail_screen.dart';
+
 class BlogDetailScreen extends StatelessWidget {
   const BlogDetailScreen({Key? key})
       : super(
-    key: key,
-  );
+          key: key,
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +19,16 @@ class BlogDetailScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: _buildAppBar(context),
+        /*appBar: _buildAppBar(context),*/
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(horizontal: 15.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               SizedBox(height: 10.v),
-              Divider(
+              /*Divider(
                 indent: 1.h,color: Colors.grey,
-              ),
+              ),*/
               SizedBox(height: 10.v),
               Container(
                 width: 315.h,
@@ -95,6 +96,18 @@ class BlogDetailScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 21.v),
+              SizedBox(
+                width: 359.h,
+                child: Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing \nelit, sed do eiusmod tempor incididunt ut labore et \ndolore magna aliqua. Ut enim ad minim veniam, quis\nnostrud exercitation ullamco laboris nisi ut aliquip ex \nea commodo consequat. Duis aute irure dolor in \nreprehenderit in voluptate velit esse cillum dolore eu \nfugiat nulla pariatur. Excepteur sint occaecat \ncupidatat non proident, sunt in culpa qui officia.",
+                  maxLines: 8,
+                  overflow: TextOverflow.ellipsis,
+                  style: CustomTextStyles.bodyLargeOnPrimary.copyWith(
+                    height: 1.70,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -103,20 +116,33 @@ class BlogDetailScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
+  /*PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-      title: AppbarTitle(
-        text: "Hi Jonathan!",
-        margin: EdgeInsets.only(left: 16.h),
+      leading: GestureDetector(
+        child: Container(
+            padding: EdgeInsets.only(left: 16),
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 16,
+            )),
+        onTap: () {
+          Navigator.pop(
+            DetailScreen() as BuildContext,
+          );
+        },
       ),
+      title: Center(
+          child: AppbarTitle(
+        text: 'Blog Detail',
+      )),
       actions: [
         AppbarTrailingImage(
           imagePath: ImageConstant.imgBellfill,
-          margin: EdgeInsets.all(16.h),
         ),
       ],
     );
-  }
+  }*/
 
   /// Section Widget
   Widget _buildBlogBannerCard(BuildContext context) {

@@ -9,21 +9,21 @@ import '../../widgets/app_bar/custom_app_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
   final List<String> imageUrls = [
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
+    'https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg',
+    'https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg',
+    'https://images.pexels.com/photos/93405/pexels-photo-93405.jpeg',
+    'https://images.pexels.com/photos/1261820/pexels-photo-1261820.jpeg',
+    'https://images.pexels.com/photos/3082341/pexels-photo-3082341.jpeg',
+    'https://images.pexels.com/photos/1181534/pexels-photo-1181534.jpeg',
+    'https://images.pexels.com/photos/1181487/pexels-photo-1181487.jpeg',
+    'https://images.pexels.com/photos/326502/pexels-photo-326502.jpeg',
+    'https://images.pexels.com/photos/1181408/pexels-photo-1181408.jpeg',
+    'https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg',
+    'https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg',
+    'https://images.pexels.com/photos/772803/pexels-photo-772803.jpeg',
+    'https://images.pexels.com/photos/707344/pexels-photo-707344.jpeg',
+    'https://images.pexels.com/photos/2104152/pexels-photo-2104152.jpeg',
+    'https://images.pexels.com/photos/228095/pexels-photo-228095.jpeg',
   ];
   ProfileScreen({Key? key,}) : super(key: key,);
 

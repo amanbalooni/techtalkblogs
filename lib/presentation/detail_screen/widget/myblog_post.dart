@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../theme/theme_helper.dart';
-import '../../home_screen/home_screen.dart';
+import '../dialog_box/dialog_box.dart';
 
 class MyBlogApp extends StatelessWidget {
   @override
@@ -12,9 +11,12 @@ class MyBlogApp extends StatelessWidget {
           profileImageUrl: 'profile image',
           profileName: 'profile name',
           profileType: '',
-          imageUrl: 'https://via.placeholder.com/400x300', // Replace with your image URL
+          imageUrl:
+              'https://via.placeholder.com/400x300', // Replace with your image URL
           title: 'Title of the Blog Post',
-          description: 'This is the description of the blog post. Replace this with your content.',
+          description:
+              'This is the description of the blog post. Replace this with your content.',
+          icon: Icons.menu,
         ),
       ),
     );
@@ -25,12 +27,20 @@ class BlogPost extends StatelessWidget {
   final String profileImageUrl;
   final String profileName;
   final String profileType;
+  final IconData icon;
   final String imageUrl;
   final String title;
   final String description;
 
-  BlogPost(
-      {required this.imageUrl, required this.title, required this.description, required this.profileImageUrl, required this.profileName, required this.profileType,});
+  BlogPost({
+    required this.imageUrl,
+    required this.title,
+    required this.description,
+    required this.profileImageUrl,
+    required this.profileName,
+    required this.profileType,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +48,85 @@ class BlogPost extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(profileImageUrl),
-            ),
-            title: Text(profileName, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
-            subtitle: Text(profileType, style: TextStyle(fontSize: 12),),
-          ),
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(profileImageUrl),
+              ),
+              title: Text(
+                profileName,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                profileType,
+                style: TextStyle(fontSize: 12),
+              ),
+              trailing: ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 30),
+                child: TextButton(
+                  child: const Icon(
+                    Icons.menu_outlined,
+                    size: 20,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      backgroundColor: Colors.transparent,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: 250,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  topLeft: Radius.circular(20))),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.only(left: 10,right: 10,bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: Color(0XFFe9e9e9),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: ListTile(
+                                    leading: Icon(Icons.star_border_outlined),
+                                    title: Text('Add to Favourites'),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 10,right: 10,bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: Color(0XFFe9e9e9),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: ListTile(
+                                    leading: Icon(Icons.person_remove),
+                                    title: Text('Unfollow'),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 10,right: 10,bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: Color(0XFFe9e9e9),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: ListTile(
+                                    leading: Icon(Icons.delete, color: Colors.red, ),
+                                    title: Text('Delete', style: TextStyle(color: Colors.red),),
+                                  ),
+                                ),
+                                /*ElevatedButton(
+                                  child: const Text('Close BottomSheet'),
+                                  onPressed: () => Navigator.pop(context),
+                                ),*/
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              )),
           Container(
             height: 200,
             decoration: BoxDecoration(
@@ -97,7 +180,10 @@ class BlogPost extends StatelessWidget {
                           color: Colors.white,
                           size: 18,
                         ),
-                        onPressed: () {},
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => const DialogBox(),
+                        ),
                       ),
                     ),
                   ],
@@ -122,8 +208,6 @@ class BlogPost extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
-
-
               ],
             ),
           ),
