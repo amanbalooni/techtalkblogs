@@ -64,7 +64,18 @@ class WelcomeScreen extends StatelessWidget {
       },
       itemCount: 4,
       itemBuilder: (context, index) {
-        return WelcomescreenimagesItemWidget();
+        List<String> imagePaths = [
+          ImageConstant.imgUnsplashY8strkutr4y,
+          ImageConstant.imgUnsplashXqlo326eoi4,
+          ImageConstant.imgUnsplashWumbEbrpjs,
+          ImageConstant.imgimgavatar,
+        ];
+        return WelcomescreenimagesItemWidget(
+          imagePath: imagePaths[index],
+          height: 171.v,
+          width: 120.h,
+          radius: BorderRadius.circular(21.h,),
+        );
       },
     );
   }

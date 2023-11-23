@@ -1,4 +1,5 @@
 import 'package:aman_s_application6/presentation/home_screen/widgets/blogcard_horizontal_widget.dart';
+import '../../widgets/dialog_box.dart';
 import '../detail_screen/detail_screen.dart';
 import '../home_screen/widgets/blogcard_item_widget.dart';
 import '../home_screen/widgets/thirtytwo_item_widget.dart';
@@ -136,10 +137,16 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 2.v),
-            child: Text(
-              "View More",
-              style: CustomTextStyles.bodyLargePrimary,
-            ),
+            child: TextButton(
+              onPressed: () => showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => const DialogBox(),
+              ),
+              child: Text(
+                "View More",
+                style: CustomTextStyles.bodyLargePrimary,
+              ),
+            )
           ),
         ],
       ),

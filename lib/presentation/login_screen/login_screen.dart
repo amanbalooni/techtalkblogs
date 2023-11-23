@@ -3,6 +3,7 @@ import 'package:aman_s_application6/widgets/custom_elevated_button.dart';
 import 'package:aman_s_application6/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/dialog_box.dart';
 import '../bottom_navigation/bottom_navigation_widget.dart';
 import '../home_screen/home_screen.dart';
 
@@ -23,8 +24,7 @@ class LoginScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SizedBox(
-          width: double.maxFinite,
+        body: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(height: 49.v),
@@ -146,12 +146,18 @@ class LoginScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 33.v),
                           _buildLoginButtonRow(context),
-                          SizedBox(height: 33.v),
+                          SizedBox(height: 10.v),
                           Divider(),
-                          SizedBox(height: 25.v),
-                          Text(
-                            "Don’t have an account? Click Here",
-                            style: CustomTextStyles.bodyLargePrimary,
+                          SizedBox(height: 15.v),
+                          TextButton(
+                            onPressed: () => showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => const DialogBox(),
+                            ),
+                            child: Text(
+                              "Don’t have an account? Click Here",
+                              style: CustomTextStyles.bodyLargePrimary,
+                            ),
                           ),
                         ],
                       ),
@@ -175,8 +181,7 @@ class LoginScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => BottomNavigationWidget()),
+              MaterialPageRoute(builder: (context) => BottomNavigationWidget()),
             );
           },
           height: 63.v,
@@ -190,9 +195,12 @@ class LoginScreen extends StatelessWidget {
             top: 23.v,
             bottom: 20.v,
           ),
-          child: Text(
-            "Forget Password?",
-            style: theme.textTheme.bodyLarge,
+          child: TextButton(
+            onPressed: () => showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => const DialogBox(),
+            ),
+            child: Text("Forget Password?"),
           ),
         ),
       ],

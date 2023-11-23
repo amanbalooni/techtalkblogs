@@ -3,19 +3,24 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class WelcomescreenimagesItemWidget extends StatelessWidget {
-  const WelcomescreenimagesItemWidget({Key? key})
+  final String imagePath;
+  final double height;
+  final double width;
+  final BorderRadiusGeometry radius;
+  const WelcomescreenimagesItemWidget({Key? key, required this.imagePath, required this.height, required this.width, required this.radius,})
       : super(
           key: key,
         );
 
   @override
   Widget build(BuildContext context) {
-    return CustomImageView(
-      imagePath: ImageConstant.imgUnsplashY8strkutr4y,
-      height: 171.v,
-      width: 120.h,
-      radius: BorderRadius.circular(
-        21.h,
+    return ClipRRect(
+      borderRadius: radius,
+      child: Image.asset(
+        imagePath,
+        height: height,
+        width: width,
+        fit: BoxFit.cover,
       ),
     );
   }

@@ -6,6 +6,7 @@ import '../../core/utils/image_constant.dart';
 import '../../widgets/app_bar/appbar_title.dart';
 import '../../widgets/app_bar/appbar_trailing_image.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
+import '../../widgets/dialog_box.dart';
 
 class ProfileScreen extends StatelessWidget {
   final List<String> imageUrls = [
@@ -102,7 +103,10 @@ class ProfileScreen extends StatelessWidget {
           ),
         ]
       ),
-          floatingActionButton: FloatingActionButton(onPressed: () {  },
+          floatingActionButton: FloatingActionButton(onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => const DialogBox(),
+          ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
